@@ -1,5 +1,8 @@
 - name: Server Post Provision
   host: all
+  become: true
+  become_user: root
+  become_method: sudo
   tasks:
     - name: Editing /etc/ssh/sshd_config.d/*
       shell: |
