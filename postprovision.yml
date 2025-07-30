@@ -1,0 +1,10 @@
+- name: Server Post Provision
+  host: all
+  tasks:
+    - name: Editing /etc/ssh/sshd_config.d/*
+      shell: |
+        sed -i 's/^#\?PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config.d/*
+    - name: Restarting SSH service
+      service:
+        name: sshd
+        state: restarted
